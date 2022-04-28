@@ -66,6 +66,8 @@ class Blockchain {
         let self = this;
         return new Promise(async (resolve, reject) => {
             try {
+                self.validateChain();
+
                 const newHeight = self.height + 1;
 
                 block.height = newHeight;
@@ -80,7 +82,6 @@ class Blockchain {
                 reject(Error);
             }
 
-            self.validateChain();
             resolve(block);
         });
     }
